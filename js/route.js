@@ -28,4 +28,20 @@ const routes = [
             pushState: true,
         },
     },
+    {
+        name: "InfoAlumni",
+        path: "/info-alumni/",
+        url: "./pages/info-alumni.html",
+        options: {
+            pushState: true,
+        },
+    },
+    {
+        name: "Jobs",
+        path: "/jobs/",
+        url: "./pages/jobs.html",
+        options: {
+            pushState: true,
+        },
+    },
 ];

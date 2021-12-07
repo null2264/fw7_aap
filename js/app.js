@@ -28,3 +28,36 @@ $$(document).on("click", "#btn-login", () => {
 $$(document).on("click", "#btn-exit", () => {
     mainView.router.navigate("/");
 });
+
+$$(document).on("click", "#btn-register-commit", () => {
+    let formData = new FormData();
+
+    const file = document.getElementById("photo").files[0];
+    formData.append("file", file);
+
+    const name = document.getElementById("name").value;
+    formData.append("name", name);
+
+    const gradYear = document.getElementById("grad-year").value;
+    formData.append("gradYear", gradYear);
+
+    const prodi = document.getElementById("prodi").value;
+    formData.append("prodi", prodi);
+
+    const email = document.getElementById("email").value;
+    formData.append("email", email);
+
+    const gender = document.getElementById("gender").value;
+    formData.append("gender", gender);
+
+    if (!!file) {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = () => {
+            app.dialog.alert("Berhasil Disimpan !");
+        };
+        xhttp.open("POST", "http://127.0.0.1/php/save-alumni.php", true);
+        xhttp.send(formData);
+    } else {
+        app.dialog.alert("Foto tidak boleh kosong !");
+    }
+})

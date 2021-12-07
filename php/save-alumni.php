@@ -26,6 +26,7 @@ if (isset($_FILES["file"])) {
 	) {
 		compress_image($tempName, "../alumniPhoto/" . $fileName1, 80);
 		$sql2 = "INSERT INTO alumni (name, email, year, prodi, gender, photo) VALUES ('$alumniName', '$alumniEmail', '$alumniYear', '$alumniProdi', '$alumniGender', '$fileName1')";
+	       	// mysqli_query($con, $sql2);
 	       	pg_query($con, $sql2);
 	}
 }

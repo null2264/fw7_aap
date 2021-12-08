@@ -22,7 +22,26 @@ $$(document).on("click", "#btn-register", () => {
 });
 
 $$(document).on("click", "#btn-login", () => {
-    mainView.router.navigate("/dashboard/");
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    app.request({
+        url: "http://127.0.0.1/php/check-login.php",
+        type: "POST",
+        data: {
+            "email": email,
+            "password": password,
+        },
+        dataType: "json",
+        success: (data) => {
+            console.log(data);
+            mainView.router.navigate("/dashboard/");
+        },
+        error: (err) => {
+            // console.log(err.response.msg);
+            app.dialog.alert(JSON.parse(err.response).msg);
+        },
+    })
 });
 
 $$(document).on("click", "#btn-exit", () => {
@@ -49,6 +68,9 @@ $$(document).on("click", "#btn-register-commit", () => {
 
     const gender = document.getElementById("gender").value;
     formData.append("gender", gender);
+
+    const password = document.getElementById("password").value;
+    formData.append("password", password);
 
     if (!!file) {
         const xhttp = new XMLHttpRequest();

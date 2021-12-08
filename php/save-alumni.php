@@ -13,6 +13,7 @@ $alumniEmail=$_POST["email"];
 $alumniYear=$_POST["gradYear"];
 $alumniProdi=$_POST["prodi"];
 $alumniGender=$_POST["gender"];
+$alumniPassword=$_POST["password"];
 
 if (isset($_FILES["file"])) {
 	$fileName1 = $_FILES["file"]["name"];
@@ -25,9 +26,10 @@ if (isset($_FILES["file"])) {
 		|| ($fileType == "image/jpg")
 	) {
 		compress_image($tempName, "../alumniPhoto/" . $fileName1, 80);
-		$sql2 = "INSERT INTO alumni (name, email, year, prodi, gender, photo) VALUES ('$alumniName', '$alumniEmail', '$alumniYear', '$alumniProdi', '$alumniGender', '$fileName1')";
-	       	// mysqli_query($con, $sql2);
-	       	pg_query($con, $sql2);
+        $sql2 = "INSERT INTO alumni (name, email, year, prodi, gender, photo, pass) VALUES ('$alumniName', '$alumniEmail', '$alumniYear',
+            '$alumniProdi', '$alumniGender', '$fileName1', '$alumniPassword')";
+        // mysqli_query($con, $sql2);
+        pg_query($con, $sql2);
 	}
 }
 

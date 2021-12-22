@@ -57,19 +57,19 @@ $$(document).on("click", "#btn-register-commit", () => {
     const name = document.getElementById("name").value;
     formData.append("name", name);
 
-    const gradYear = document.getElementById("grad-year").value;
+    const gradYear = document.getElementById("gradYear").value;
     formData.append("gradYear", gradYear);
 
     const prodi = document.getElementById("prodi").value;
     formData.append("prodi", prodi);
 
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("regEmail").value;
     formData.append("email", email);
 
     const gender = document.getElementById("gender").value;
     formData.append("gender", gender);
 
-    const password = document.getElementById("password").value;
+    const password = document.getElementById("regPassword").value;
     formData.append("password", password);
 
     if (!!file) {

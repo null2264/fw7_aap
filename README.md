@@ -2,7 +2,7 @@ Program yang digunakan agak berbeda
 
 Yang digunakan dosen -> Yang saya gunakan
 
-XAMPP -> Native (Menggunakan Linux)  
+XAMPP -> Nothing... (Menggunakan Linux)  
 Apache -> Nginx + config PHP  
 MySQL -> PostgreSQL  
 

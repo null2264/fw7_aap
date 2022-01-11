@@ -77,10 +77,20 @@ ALTER TABLE ONLY public.alumni ALTER COLUMN id SET DEFAULT nextval('public.alumn
 
 
 --
+-- Data for Name: alumni; Type: TABLE DATA; Schema: public; Owner: ziro
+--
+
+COPY public.alumni (id, name, email, pass, year, prodi, gender, photo) FROM stdin;
+1	Rudi	rudi@gmail.com	123	2021	IT	M	landing1.png
+2	null	null@null.null	null	0	IT	M	localhost_8080_(iPhone X).png
+\.
+
+
+--
 -- Name: alumni_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ziro
 --
 
-SELECT pg_catalog.setval('public.alumni_id_seq', 0, true);
+SELECT pg_catalog.setval('public.alumni_id_seq', 2, true);
 
 
 --

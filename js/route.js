@@ -35,6 +35,35 @@ const routes = [
         options: {
             pushState: true,
         },
+        on: {
+            pageAfterIn: (e, page) => {
+                app.request.json("http://127.0.0.1/php/list-alumni.php", (data) => {
+                    let alumni = "";
+                    let nom = 0;
+
+                    for (let i=0;i<data.length;i++) {
+                        alumni += `
+                            <li>
+                                <a href="#" class="item-link item-content">
+                                    <div class="item-media">
+                                        <img src="http://127.0.0.1/alumniPhoto/${data[i].photo}"
+                                            width="40" height="40"/>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">${data[i].name}</div>
+                                        </div>
+                                        <div class="item-subtitle">${data[i].year}</div>
+                                    </div>
+                                </a>
+                            </li>
+                        `;
+                    }
+
+                    $$("#list-alumni").html(alumni);
+                });
+            },
+        },
     },
     {
         name: "Jobs",

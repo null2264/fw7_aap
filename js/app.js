@@ -82,4 +82,14 @@ $$(document).on("click", "#btn-register-commit", () => {
     } else {
         app.dialog.alert("Foto tidak boleh kosong !");
     }
-})
+});
+
+// has to be function () instead of () => {}
+// cuz Dom7 hates it
+$$(document).on("click", "#detail", function ()
+{
+    const index = $$(this).data("index");
+    localStorage.removeItem("index");
+    localStorage.setItem("index", index);
+    mainView.router.navigate("/detail-alumni/");
+});

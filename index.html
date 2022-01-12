@@ -24,61 +24,71 @@
                 <!-- Initial Page, "data-name" contains page name -->
                 <div data-name="home" class="page">
 
-                    <!-- Top Navbar -->
-                    <!-- <div class="navbar"> -->
-                    <!--     <div class="navbar-bg"></div> -->
-                    <!--     <div class="navbar-inner"> -->
-                    <!--         <div class="title">myProject</div> -->
-                    <!--     </div> -->
-                    <!-- </div> -->
-
-                    <center style="padding-top:25%;"><img src="img/Bidar.png" width="370px" height="120px"/></center>
+                    <center style="padding-top:15vh;"><img src="img/Bidar.png" width="370px" height="120px"/></center>
 
                     <!-- Scrollable page content -->
                     <div class="page-content">
-                        <div class="block">
-                            <div class="row">
-                                <div class="list inline-labels no-hairlines-md">
-                                    <ul>
-
-                                        <li class="item-content item-input">
-                                            <div class="item-inner">
-                                                <div class="item-title item-label">E-mail</div>
-                                                <div class="item-input-wrap">
-                                                <input type="email" id="email" placeholder="Your e-mail" />
-                                                <span class="input-clear-button"></span>
-                                                </div>
+                        <div class="list inline-labels no-hairlines-md">
+                            <ul>
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">Operation</div>
+                                            <div class="item-input-wrap">
+                                                <select id="choice">
+                                                    <option selected value="+">Add</option>
+                                                    <option value="-">Subtract</option>
+                                                    <option value="/">Divide</option>
+                                                    <option value="*">Multiply</option>
+                                                </select>
                                             </div>
-                                        </li>
+                                        </div>
+                                    </div>
+                                </li>
 
-                                        <li class="item-content item-input">
-                                            <div class="item-inner">
-                                                <div class="item-title item-label">Password</div>
-                                                <div class="item-input-wrap">
-                                                <input type="password" id="password" placeholder="Your password" />
-                                                <span class="input-clear-button"></span>
-                                                </div>
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">Number 1</div>
+                                            <div class="item-input-wrap">
+                                                <input class="new-line" placeholder="Type here" type="text" id="valX"/>
                                             </div>
-                                        </li>
+                                        </div>
+                                    </div>
+                                </li>
 
-                                    </ul>
-                                </div>
-                            </div>
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">Number 2</div>
+                                            <div class="item-input-wrap">
+                                                <input class="new-line" placeholder="Type here" type="text" id="valY"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
 
-                            <div class="row">
-                                <button
-                                    class="col button button-fill button-round"
-                                    id="btn-register"
-                                >
-                                    Register
-                                </button>
-                                <button
-                                    class="col button button-fill button-round"
-                                    id="btn-login"
-                                >
-                                    Login
-                                </button>
-                            </div>
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-input-wrap">
+                                                <button class="col button button-fill button-round" id="calculate">Calculate</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">Number 2</div>
+                                            <div class="item-input-wrap">
+                                                <input class="new-line" placeholder="Result goes here" readonly type="text" id="result"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

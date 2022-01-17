@@ -31,7 +31,7 @@ const routes = [
     {
         name: "InfoAlumni",
         path: "/info-alumni/",
-        url: "./pages/info-alumni.html",
+        url: "./pages/alumni/index.html",
         options: {
             pushState: true,
         },
@@ -66,7 +66,7 @@ const routes = [
         detailRoutes: [
             {
                 path: "/info-alumni/:userId/",
-                url: "./pages/detail-alumni.html",
+                url: "./pages/alumni/detail.html",
                 master: true,
                 on: {
                     pageAfterIn: async (e, page) => {
@@ -117,7 +117,7 @@ const routes = [
     {
         name: "Jobs",
         path: "/jobs/",
-        url: "./pages/jobs.html",
+        url: "./pages/jobs/index.html",
         options: {
             pushState: true,
         },
@@ -125,7 +125,7 @@ const routes = [
             {
                 name: "NewJob",
                 path: "new/",
-                url: "./pages/new-job.html",
+                url: "./pages/jobs/new.html",
             },
         ],
         on: {
@@ -155,7 +155,7 @@ const routes = [
     {
         name: "Blog",
         path: "/blog/",
-        url: "./pages/blog.html",
+        url: "./pages/blog/index.html",
         options: {
             pushState: true,
         },
@@ -163,7 +163,7 @@ const routes = [
             {
                 name: "NewPost",
                 path: "new/",
-                url: "./pages/new-post.html",
+                url: "./pages/blog/new.html",
             },
         ],
         // on: {

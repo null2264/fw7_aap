@@ -152,4 +152,42 @@ const routes = [
             },
         },
     },
+    {
+        name: "Blog",
+        path: "/blog/",
+        url: "./pages/blog.html",
+        options: {
+            pushState: true,
+        },
+        routes: [
+            {
+                name: "NewPost",
+                path: "new/",
+                url: "./pages/new-post.html",
+            },
+        ],
+        // on: {
+        //     pageAfterIn: (e, page) => {
+        //         app.request.json("http://127.0.0.1/php/blog.php", (data) => {
+        //             let blog = "";
+
+        //             for (let i=0;i<data.length;i++) {
+        //                 blog += `
+        //                     <li>
+        //                         <a href="#" class="item-link item-content">
+        //                             <div class="item-media"><i class="icon icon-f7"></i></div>
+        //                             <div class="item-inner">
+        //                                 <div class="item-title">${data[i].name}</div>
+        //                                 <div class="item-after">${data[i].position}</div>
+        //                             </div>
+        //                         </a>
+        //                     </li>
+        //                 `;
+        //             }
+
+        //             $$("#list-post").html(blog);
+        //         });
+        //     },
+        // },
+    },
 ];

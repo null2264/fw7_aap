@@ -5,3 +5,8 @@
 form#login-form {
     margin-bottom: 5px;
 }
+
+.button.active-state#btn-register {
+    background-color: transparent!important;
+    filter: brightness(1.2);
+}

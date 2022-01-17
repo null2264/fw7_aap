@@ -80,12 +80,12 @@ $$(document).on("submit", "#register-form", function (e)
     const password = document.getElementById("regPassword").value;
     formData.append("password", password);
 
-    if (!!file) {
+    if (file) {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = () => {
             app.dialog.alert("Berhasil Disimpan !");
         };
-        xhttp.open("POST", "http://127.0.0.1/php/save-alumni.php", true);
+        xhttp.open("POST", "http://127.0.0.1/php/alumni.php", true);
         xhttp.send(formData);
     } else {
         app.dialog.alert("Foto tidak boleh kosong !");

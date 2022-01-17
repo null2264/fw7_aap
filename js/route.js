@@ -37,9 +37,8 @@ const routes = [
         },
         on: {
             pageAfterIn: (e, page) => {
-                app.request.json("http://127.0.0.1/php/list-alumni.php", (data) => {
+                app.request.json("http://127.0.0.1/php/alumni.php", (data) => {
                     let alumni = "";
-                    let nom = 0;
 
                     for (let i=0;i<data.length;i++) {
                         alumni += `

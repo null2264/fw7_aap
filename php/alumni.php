@@ -12,7 +12,7 @@ include("connection.php");
 $__query = $db_type > 0 ? "pg_query" : "mysqli_query";
 $__fetch = $db_type > 0 ? "pg_fetch_object" : "mysqli_fetch_object";
 
-switch ($_SERVER['REQUEST_METHOD'])
+switch ($_SERVER["REQUEST_METHOD"])
 {
     case "GET":
         $queryString = "SELECT * FROM alumni";
@@ -26,7 +26,7 @@ switch ($_SERVER['REQUEST_METHOD'])
 
         $data = array();
 
-        while ($row=$__fetch($query)) {
+        while ($row = $__fetch($query)) {
             $data[] = $row;
         }
 
@@ -34,12 +34,12 @@ switch ($_SERVER['REQUEST_METHOD'])
         break;
 
     case "POST":
-        $alumniName=$_POST["name"];
-        $alumniEmail=$_POST["email"];
-        $alumniYear=$_POST["gradYear"];
-        $alumniProdi=$_POST["prodi"];
-        $alumniGender=$_POST["gender"];
-        $alumniPassword=$_POST["password"];
+        $alumniName = $_POST["name"];
+        $alumniEmail = $_POST["email"];
+        $alumniYear = $_POST["gradYear"];
+        $alumniProdi = $_POST["prodi"];
+        $alumniGender = $_POST["gender"];
+        $alumniPassword = $_POST["password"];
 
         if (isset($_FILES["file"])) {
             $fileName = $_FILES["file"]["name"];
@@ -87,3 +87,4 @@ function compress_image($source_url, $destination_url, $quality) {
 		$image = imagecreatefrompng($source_url);
 	imagejpeg($image, $destination_url, $quality);
 }
+?>

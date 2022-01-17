@@ -120,3 +120,23 @@ $$(document).on("submit", "#new-job-form", function (e)
 
     this.reset(); // reset form
 });
+
+$$(document).on("submit", "#new-post-form", function (e)
+{
+    // stop redirection
+    e.preventDefault();
+
+    let formData = new FormData();
+
+    formData.append("title", document.getElementById("blogTitle").value);
+    formData.append("content", document.getElementById("blogContent").value);
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = () => {
+        app.dialog.alert("Berhasil Disimpan !");
+    };
+    xhttp.open("POST", "http://127.0.0.1/php/blog.php", true);
+    xhttp.send(formData);
+
+    this.reset(); // reset form
+});

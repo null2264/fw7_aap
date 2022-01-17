@@ -1,3 +1,28 @@
+function timeDifference(current, previous) {
+
+    const msPerMinute = 60 * 1000;
+    const msPerHour = msPerMinute * 60;
+    const msPerDay = msPerHour * 24;
+
+    const elapsed = current - previous;
+
+    if (elapsed < msPerMinute) {
+         return Math.round(elapsed/1000) + ' seconds ago';   
+    }
+
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+    }
+
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' hours ago';   
+    }
+
+    else {
+        return current.toDateString();   
+    }
+}
+
 const routes = [
     {
         name: "Home",
@@ -136,7 +161,7 @@ const routes = [
                     for (let i=0;i<data.length;i++) {
                         job += `
                             <li>
-                                <a href="#" class="item-link item-content">
+                                <a href="#" data-index="${data[i].id}" class="item-link item-content">
                                     <div class="item-media"><i class="icon icon-f7"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title">${data[i].name}</div>
@@ -166,28 +191,33 @@ const routes = [
                 url: "./pages/blog/new.html",
             },
         ],
-        // on: {
-        //     pageAfterIn: (e, page) => {
-        //         app.request.json("http://127.0.0.1/php/blog.php", (data) => {
-        //             let blog = "";
+        on: {
+            pageAfterIn: (e, page) => {
+                app.request.json("http://127.0.0.1/php/blog.php", (data) => {
+                    let blog = "";
 
-        //             for (let i=0;i<data.length;i++) {
-        //                 blog += `
-        //                     <li>
-        //                         <a href="#" class="item-link item-content">
-        //                             <div class="item-media"><i class="icon icon-f7"></i></div>
-        //                             <div class="item-inner">
-        //                                 <div class="item-title">${data[i].name}</div>
-        //                                 <div class="item-after">${data[i].position}</div>
-        //                             </div>
-        //                         </a>
-        //                     </li>
-        //                 `;
-        //             }
+                    for (let i=0;i<data.length;i++) {
+                        blog += `
+                            <li>
+                                <a href="#" data-index="${data[i].id}" class="item-link item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">${data[i].title}</div>
+                                            <div class="item-after">${timeDifference(new Date(), new Date(data[i].date*1000))}</div>
+                                        </div>
+                                        <div class="item-subtitle">Unknown</div>
+                                        <div class="item-text">
+                                            ${data[i].content}
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        `;
+                    }
 
-        //             $$("#list-post").html(blog);
-        //         });
-        //     },
-        // },
+                    $$("#list-post").html(blog);
+                });
+            },
+        },
     },
 ];

@@ -15,7 +15,7 @@ $__fetch = $db_type > 0 ? "pg_fetch_object" : "mysqli_fetch_object";
 switch ($_SERVER["REQUEST_METHOD"])
 {
     case "GET":
-        $queryString = "SELECT * FROM post";
+        $queryString = "SELECT * FROM post ORDER BY date DESC";
 
         $query = $__query($con, $queryString) or exit("RIP");
 
@@ -29,8 +29,8 @@ switch ($_SERVER["REQUEST_METHOD"])
         break;
 
     case "POST":
-        $blogTitle = $_POST["name"];
-        $blogContent = $_POST["position"];
+        $blogTitle = $_POST["title"];
+        $blogContent = $_POST["content"];
         $blogDate = microtime(true);
         $blogAuthor = 0;
 

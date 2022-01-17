@@ -25,10 +25,12 @@ switch ($_SERVER['REQUEST_METHOD'])
         $query = $__query($con, $queryString) or exit("RIP");
 
         $data = array();
-         
+
         while ($row=$__fetch($query)) {
             $data[] = $row;
         }
+
+        echo json_encode($data, JSON_PRETTY_PRINT);
         break;
 
     case "POST":
@@ -50,9 +52,22 @@ switch ($_SERVER['REQUEST_METHOD'])
                 || ($fileType == "image/jpg")
             ) {
                 compress_image($tempName, "../alumniPhoto/" . $fileName, 80);
-                $queryString = "INSERT INTO alumni (name, email, year, prodi, gender, photo, pass) VALUES ('$alumniName', '$alumniEmail', '$alumniYear',
-                    '$alumniProdi', '$alumniGender', '$fileName', '$alumniPassword')";
-                $__query($con, $queryString);
+
+                /* $queryString = "INSERT INTO alumni (name, email, year, prodi, gender, photo, pass) VALUES ('$alumniName', '$alumniEmail', '$alumniYear', */
+                /*     '$alumniProdi', '$alumniGender', '$fileName', '$alumniPassword')"; */
+
+                $queryString = "INSERT INTO alumni (name, email, year, prodi, gender, photo, pass) VALUES";
+                $inputArray = [$alumniName, $alumniEmail, $alumniYear, $alumniProdi, $alumniGender, $fileName, $alumniPassword];
+
+                // Sanitized query
+                if ($db_type > 0) {
+                    pg_prepare($con, "newUser", "$queryString ($1, $2, $3, $4, $5, $6, $7)");
+                    pg_execute($con, "newUser", $inputArray);
+                } else {
+                    $query = $con->prepare("$queryString (?, ?, ?, ?, ?, ?, ?)");
+                    $query->bind_param("ssissss", ...$inputArray);
+                    $query->execute();
+                }
             }
         }
         break;
@@ -72,5 +87,3 @@ function compress_image($source_url, $destination_url, $quality) {
 		$image = imagecreatefrompng($source_url);
 	imagejpeg($image, $destination_url, $quality);
 }
-
-echo json_encode($data,JSON_PRETTY_PRINT);

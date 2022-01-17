@@ -21,7 +21,7 @@ $$(document).on("click", "#btn-register", () => {
     mainView.router.navigate("/register/");
 });
 
-$$(document).on("submit", "#login-form", (e) => {
+$$(document).on("submit", "#login-form", function (e) {
     // stop redirection
     e.preventDefault();
 
@@ -36,8 +36,8 @@ $$(document).on("submit", "#login-form", (e) => {
             "password": password,
         },
         dataType: "json",
-        success: (data) => {
-            console.log(data);
+        success: () => {
+            this.reset(); // reset form
             mainView.router.navigate("/dashboard/");
         },
         error: (err) => {
@@ -88,6 +88,8 @@ $$(document).on("submit", "#register-form", (e) => {
     } else {
         app.dialog.alert("Foto tidak boleh kosong !");
     }
+
+    this.reset(); // reset form
 });
 
 // has to be function () instead of () => {}

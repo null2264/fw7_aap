@@ -96,9 +96,6 @@ $$(document).on("submit", "#register-form", function (e)
 
 $$(document).on("click", "#detail", function ()
 {
-    console.log($$("#detail"));
     const index = $$(this).data("index");
-    localStorage.removeItem("index");
-    localStorage.setItem("index", index);
-    mainView.router.navigate("/detail-alumni/");
+    mainView.router.navigate(`/info-alumni/${index}/`);
 });

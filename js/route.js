@@ -63,6 +63,56 @@ const routes = [
                 });
             },
         },
+        detailRoutes: [
+            {
+                path: "/info-alumni/:userId/",
+                url: "./pages/detail-alumni.html",
+                master: true,
+                on: {
+                    pageAfterIn: (e, page) => {
+                        const index = page.route.params.userId;
+                        app.request({
+                            url: "http://127.0.0.1/php/detail-alumni.php",
+                            type: "POST",
+                            data: {
+                                "id": index
+                            },
+                            dataType: "json",
+                            success: (data) => {
+                                const cur = data[0];
+                                let tdm = `
+                                    <tr>
+                                        <td>Nama</td>
+                                        <td>:</td>
+                                        <td>${cur.name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prodi</td>
+                                        <td>:</td>
+                                        <td>${cur.prodi}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>:</td>
+                                        <td>${cur.email}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td>:</td>
+                                        <td>${cur.gender}</td>
+                                    </tr>
+                                `;
+                                $$("#info-alum").html(tdm);
+                            },
+                            error: (err) => {
+                                // console.log(err.response.msg);
+                                app.dialog.alert(JSON.parse(err.response).msg);
+                            },
+                        })
+                    },
+                },
+            },
+        ],
     },
     {
         name: "Jobs",
@@ -70,57 +120,6 @@ const routes = [
         url: "./pages/jobs.html",
         options: {
             pushState: true,
-        },
-    },
-    {
-        name: "DetailAlumni",
-        path: "/detail-alumni/",
-        url: "./pages/detail-alumni.html",
-        options: {
-            pushState: true,
-        },
-        on: {
-            pageAfterIn: (e, page) => {
-                const index = localStorage.getItem("index");
-                app.request({
-                    url: "http://127.0.0.1/php/detail-alumni.php",
-                    type: "POST",
-                    data: {
-                        "id": index
-                    },
-                    dataType: "json",
-                    success: (data) => {
-                        const cur = data[0];
-                        let tdm = `
-                            <tr>
-                                <td>Nama</td>
-                                <td>:</td>
-                                <td>${cur.name}</td>
-                            </tr>
-                            <tr>
-                                <td>Prodi</td>
-                                <td>:</td>
-                                <td>${cur.prodi}</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>:</td>
-                                <td>${cur.email}</td>
-                            </tr>
-                            <tr>
-                                <td>Gender</td>
-                                <td>:</td>
-                                <td>${cur.gender}</td>
-                            </tr>
-                        `;
-                        $$("#info-alum").html(tdm);
-                    },
-                    error: (err) => {
-                        // console.log(err.response.msg);
-                        app.dialog.alert(JSON.parse(err.response).msg);
-                    },
-                })
-            },
         },
     },
 ];

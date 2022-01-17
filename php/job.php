@@ -39,8 +39,8 @@ switch ($_SERVER["REQUEST_METHOD"])
 
         // Sanitized query
         if ($db_type > 0) {
-            pg_prepare($con, "newUser", "$queryString ($1, $2, $3, $4)");
-            pg_execute($con, "newUser", $inputArray);
+            pg_prepare($con, "newJob", "$queryString ($1, $2, $3, $4)");
+            pg_execute($con, "newJob", $inputArray);
         } else {
             $query = $con->prepare("$queryString (?, ?, ?, ?)");
             $query->bind_param("sssi", ...$inputArray);

@@ -16,12 +16,13 @@ const app = new Framework7({
 const mainView = app.views.create(".view-main");
 const $$ = Dom7;
 
-// $$(document).on("click", "#btn-register", function () {
-$$(document).on("click", "#btn-register", () => {
+$$(document).on("click", "#btn-register", function ()
+{
     mainView.router.navigate("/register/");
 });
 
-$$(document).on("submit", "#login-form", function (e) {
+$$(document).on("submit", "#login-form", function (e)
+{
     // stop redirection
     e.preventDefault();
 
@@ -47,11 +48,13 @@ $$(document).on("submit", "#login-form", function (e) {
     })
 });
 
-$$(document).on("click", "#btn-exit", () => {
+$$(document).on("click", "#btn-exit", function ()
+{
     mainView.router.navigate("/");
 });
 
-$$(document).on("submit", "#register-form", (e) => {
+$$(document).on("submit", "#register-form", function (e)
+{
     // stop redirection
     e.preventDefault();
 
@@ -92,8 +95,6 @@ $$(document).on("submit", "#register-form", (e) => {
     this.reset(); // reset form
 });
 
-// has to be function () instead of () => {}
-// cuz Dom7 hates it
 $$(document).on("click", "#detail", function ()
 {
     console.log($$("#detail"));

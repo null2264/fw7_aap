@@ -69,11 +69,11 @@ const routes = [
                 url: "./pages/detail-alumni.html",
                 master: true,
                 on: {
-                    pageAfterIn: (e, page) => {
+                    pageAfterIn: async (e, page) => {
                         const index = page.route.params.userId;
-                        app.request({
-                            url: "http://127.0.0.1/php/detail-alumni.php",
-                            type: "POST",
+                        await app.request({
+                            url: "http://127.0.0.1/php/alumni.php",
+                            type: "GET",
                             data: {
                                 "id": index
                             },

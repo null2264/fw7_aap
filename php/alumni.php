@@ -16,6 +16,12 @@ switch ($_SERVER['REQUEST_METHOD'])
 {
     case "GET":
         $queryString = "SELECT * FROM alumni";
+
+        $userId = isset($_GET["id"]) ? $_GET["id"] : NULL;
+        if ($userId != NULL) {
+            $queryString .= " WHERE id='$userId'";
+        }
+
         $query = $__query($con, $queryString) or exit("RIP");
 
         $data = array();
@@ -24,6 +30,7 @@ switch ($_SERVER['REQUEST_METHOD'])
             $data[] = $row;
         }
         break;
+
     case "POST":
         $alumniName=$_POST["name"];
         $alumniEmail=$_POST["email"];

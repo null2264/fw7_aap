@@ -21,8 +21,10 @@ $$(document).on("click", "#btn-register", function ()
     mainView.router.navigate("/register/");
 });
 
-$$(document).on("click", "#btn-login", function ()
+$$(document).on("submit", "#login-form", function (e)
 {
+    // stop redirection
+    e.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -35,6 +37,7 @@ $$(document).on("click", "#btn-login", function ()
         },
         dataType: "json",
         success: () => {
+            this.reset(); // reset form
             mainView.router.navigate("/dashboard/");
         },
         error: (err) => {
@@ -42,13 +45,6 @@ $$(document).on("click", "#btn-login", function ()
             app.dialog.alert(JSON.parse(err.response).msg);
         },
     })
-});
-
-$$(document).on("submit", "#login-form", function (e)
-{
-    // stop redirection
-    e.preventDefault();
-    this.reset(); // reset form
 });
 
 $$(document).on("click", "#btn-exit", function ()

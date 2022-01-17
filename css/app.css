@@ -1,3 +1,7 @@
-.row#login-submit {
-    flex-direction: row-reverse;
+#login-submit {
+    padding-top: 10px;
+}
+
+form#login-form {
+    margin-bottom: 5px;
 }

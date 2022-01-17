@@ -1,0 +1,3 @@
+.row#login-submit {
+    flex-direction: row-reverse;
+}

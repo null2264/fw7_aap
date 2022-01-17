@@ -2,5 +2,8 @@
   "dependencies": {
     "framework7": "^6.3.9",
     "framework7-icons": "^5.0.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0"
   }
 }

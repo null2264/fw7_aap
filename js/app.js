@@ -21,7 +21,10 @@ $$(document).on("click", "#btn-register", () => {
     mainView.router.navigate("/register/");
 });
 
-$$(document).on("click", "#btn-login", () => {
+$$(document).on("submit", "#login-form", (e) => {
+    // stop redirection
+    e.preventDefault();
+
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -48,7 +51,10 @@ $$(document).on("click", "#btn-exit", () => {
     mainView.router.navigate("/");
 });
 
-$$(document).on("click", "#btn-register-commit", () => {
+$$(document).on("submit", "#register-form", (e) => {
+    // stop redirection
+    e.preventDefault();
+
     let formData = new FormData();
 
     const file = document.getElementById("photo").files[0];
@@ -88,6 +94,7 @@ $$(document).on("click", "#btn-register-commit", () => {
 // cuz Dom7 hates it
 $$(document).on("click", "#detail", function ()
 {
+    console.log($$("#detail"));
     const index = $$(this).data("index");
     localStorage.removeItem("index");
     localStorage.setItem("index", index);

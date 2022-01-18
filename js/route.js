@@ -263,6 +263,10 @@ const routes = [
                     let blog = "";
 
                     for (let i=0;i<data.length;i++) {
+                        let content = document.createElement("div");
+                        content.innerHTML = data[i].content;
+                        content = content.textContent || content.innerText || "";
+
                         blog += `
                             <li>
                                 <a href="#" data-index="${data[i].id}" id="read-more" class="item-link item-content">
@@ -273,7 +277,7 @@ const routes = [
                                         </div>
                                         <div class="item-subtitle">Unknown</div>
                                         <div class="item-text">
-                                            ${data[i].content.replace(/<\/?[^>]+(>|$)/g, " ")}
+                                            ${content}
                                         </div>
                                     </div>
                                 </a>

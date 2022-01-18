@@ -245,6 +245,7 @@ const routes = [
                                         <div class="block-header">By Unknown • ${timeDifference(new Date(), new Date(cur.date*1000))}</div>
                                         <p>${cur.content}</p>
                                 `;
+
                                 $$("#blog-post").html(tdm);
                             },
                             error: (err) => {
@@ -272,7 +273,7 @@ const routes = [
                                         </div>
                                         <div class="item-subtitle">Unknown</div>
                                         <div class="item-text">
-                                            ${data[i].content}
+                                            ${data[i].content.replace(/<\/?[^>]+(>|$)/g, " ")}
                                         </div>
                                     </div>
                                 </a>

@@ -135,7 +135,7 @@ $$(document).on("submit", "#new-post-form", function (e)
     let formData = new FormData();
 
     formData.append("title", document.getElementById("blogTitle").value);
-    formData.append("content", document.getElementById("blogContent").value);
+    formData.append("content", app.textEditor.get("#blogContent").value);
 
     const xhttp = new XMLHttpRequest();
     xhttp.onload = () => {

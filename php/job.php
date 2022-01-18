@@ -17,6 +17,10 @@ switch ($_SERVER["REQUEST_METHOD"])
     case "GET":
         $queryString = "SELECT * FROM job";
 
+        $jobId = isset($_GET["id"]) ? $_GET["id"] : NULL;
+        if ($jobId != NULL) {
+            $queryString .= " WHERE id='$jobId'";
+        }
         $query = $__query($con, $queryString) or exit("RIP");
 
         $data = [];

@@ -121,6 +121,12 @@ $$(document).on("submit", "#new-job-form", function (e)
     this.reset(); // reset form
 });
 
+$$(document).on("click", "#job-more-info", function ()
+{
+    const index = $$(this).data("index");
+    mainView.router.navigate(`/jobs/detail/${index}/`);
+});
+
 $$(document).on("submit", "#new-post-form", function (e)
 {
     // stop redirection
@@ -139,4 +145,10 @@ $$(document).on("submit", "#new-post-form", function (e)
     xhttp.send(formData);
 
     this.reset(); // reset form
+});
+
+$$(document).on("click", "#read-more", function ()
+{
+    const index = $$(this).data("index");
+    mainView.router.navigate(`/blog/read/${index}/`);
 });

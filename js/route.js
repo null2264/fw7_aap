@@ -60,6 +60,7 @@ const routes = [
         options: {
             pushState: true,
         },
+        master: true,
         on: {
             pageAfterIn: (e, page) => {
                 app.request.json("http://127.0.0.1/php/alumni.php", (data) => {
@@ -92,15 +93,13 @@ const routes = [
             {
                 path: "/info-alumni/:userId/",
                 url: "./pages/alumni/detail.html",
-                master: true,
                 on: {
                     pageAfterIn: async (e, page) => {
-                        const index = page.route.params.userId;
                         await app.request({
                             url: "http://127.0.0.1/php/alumni.php",
                             type: "GET",
                             data: {
-                                "id": index
+                                "id": page.route.params.userId,
                             },
                             dataType: "json",
                             success: (data) => {
@@ -146,11 +145,44 @@ const routes = [
         options: {
             pushState: true,
         },
+        master: true,
         routes: [
             {
                 name: "NewJob",
                 path: "new/",
                 url: "./pages/jobs/new.html",
+            },
+        ],
+        detailRoutes: [
+            {
+                path: "/jobs/detail/:jobId/",
+                url: "./pages/jobs/detail.html",
+                on: {
+                    pageAfterIn: async (e, page) => {
+                        await app.request({
+                            url: "http://127.0.0.1/php/job.php",
+                            type: "GET",
+                            data: {
+                                "id": page.route.params.jobId,
+                            },
+                            dataType: "json",
+                            success: (data) => {
+                                const cur = data[0];
+                                let tdm = `
+                                    <div class="block-title block-title-medium">${cur.name}</div>
+                                    <div class="block">
+                                        <div class="block-header">${cur.position}</div>
+                                        <p>${cur.description}</p>
+                                `;
+                                $$("#job-detail").html(tdm);
+                            },
+                            error: (err) => {
+                                // console.log(err.response.msg);
+                                app.dialog.alert(JSON.parse(err.response).msg);
+                            },
+                        })
+                    },
+                },
             },
         ],
         on: {
@@ -161,7 +193,7 @@ const routes = [
                     for (let i=0;i<data.length;i++) {
                         job += `
                             <li>
-                                <a href="#" data-index="${data[i].id}" class="item-link item-content">
+                                <a href="#" data-index="${data[i].id}" id="job-more-info" class="item-link item-content">
                                     <div class="item-media"><i class="icon icon-f7"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title">${data[i].name}</div>
@@ -184,11 +216,44 @@ const routes = [
         options: {
             pushState: true,
         },
+        master: true,
         routes: [
             {
                 name: "NewPost",
                 path: "new/",
                 url: "./pages/blog/new.html",
+            },
+        ],
+        detailRoutes: [
+            {
+                path: "/blog/read/:postId/",
+                url: "./pages/blog/read.html",
+                on: {
+                    pageAfterIn: async (e, page) => {
+                        await app.request({
+                            url: "http://127.0.0.1/php/blog.php",
+                            type: "GET",
+                            data: {
+                                "id": page.route.params.postId,
+                            },
+                            dataType: "json",
+                            success: (data) => {
+                                const cur = data[0];
+                                let tdm = `
+                                    <div class="block-title block-title-medium">${cur.title}</div>
+                                    <div class="block">
+                                        <div class="block-header">By Unknown • ${timeDifference(new Date(), new Date(cur.date*1000))}</div>
+                                        <p>${cur.content}</p>
+                                `;
+                                $$("#blog-post").html(tdm);
+                            },
+                            error: (err) => {
+                                // console.log(err.response.msg);
+                                app.dialog.alert(JSON.parse(err.response).msg);
+                            },
+                        })
+                    },
+                },
             },
         ],
         on: {
@@ -199,7 +264,7 @@ const routes = [
                     for (let i=0;i<data.length;i++) {
                         blog += `
                             <li>
-                                <a href="#" data-index="${data[i].id}" class="item-link item-content">
+                                <a href="#" data-index="${data[i].id}" id="read-more" class="item-link item-content">
                                     <div class="item-inner">
                                         <div class="item-title-row">
                                             <div class="item-title">${data[i].title}</div>

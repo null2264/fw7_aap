@@ -15,8 +15,11 @@ $__fetch = $db_type > 0 ? "pg_fetch_object" : "mysqli_fetch_object";
 switch ($_SERVER["REQUEST_METHOD"])
 {
     case "GET":
-        $queryString = "SELECT * FROM post ORDER BY date DESC";
+        $queryString = "SELECT * FROM post";
 
+        $postId = isset($_GET["id"]) ? $_GET["id"] : NULL;
+
+        $queryString .= $postId != NULL ? " WHERE id='$postId'" : " ORDER BY date DESC";
         $query = $__query($con, $queryString) or exit("RIP");
 
         $data = [];

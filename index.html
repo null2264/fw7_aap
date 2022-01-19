@@ -32,57 +32,28 @@
                     <!--     </div> -->
                     <!-- </div> -->
 
-                    <center style="padding-top:25%;"><img src="img/Bidar.png" width="370px" height="120px"/></center>
+                    <!-- Bottom Toolbar -->
+                    <div class="toolbar toolbar-bottom">
+                        <div class="toolbar-inner">
+                            <!-- Toolbar links -->
+                            <a href="/" class="link">Home</a>
+                            <a href="/admin/" class="link" id="btn-exit">Master Data</a>
+                        </div>
+                    </div>
+
+                    <center style="padding-top:2vh;"><img src="img/logo.png" width="370px" height="250px"/></center>
 
                     <!-- Scrollable page content -->
                     <div class="page-content">
                         <div class="block">
-                            <form class="list inline-labels no-hairlines-md" id="login-form">
-                                <ul>
-
-                                    <li class="item-content item-input">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label">E-mail</div>
-                                            <div class="item-input-wrap">
-                                            <input type="email" id="email" required placeholder="Your e-mail" />
-                                            <span class="input-clear-button"></span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="item-content item-input">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label">Password</div>
-                                            <div class="item-input-wrap">
-                                            <input type="password" id="password" required placeholder="Your password" />
-                                            <span class="input-clear-button"></span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="item-content item-input">
-                                        <div class="item-inner" id="login-submit">
-
-                                            <button
-                                                class="col button button-fill button-round"
-                                                id="btn-login"
-                                            >
-                                                Login
-                                            </button>
-                                        </div>
-                                    </li>
-
-                                </ul>
-
-                            </form>
-                            <div>
-                                <button
-                                    class="col button"
-                                    id="btn-register"
-                                >
-                                    Register
-                                </button>
-                            </div>
+                            <a href="/products/shirt/" class="product-type">
+                                <img src="img/shirt.png" width="140px" height="140px"/>
+                                <span>Shirt</span>
+                            </a>
+                            <a href="/products/pants/" class="product-type" id="pants">
+                                <img src="img/pants.png" width="90px" height="130px"/>
+                                <span>Pants</span>
+                            </a>
                         </div>
                     </div>
                 </div>

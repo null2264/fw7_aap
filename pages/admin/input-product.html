@@ -1,30 +1,27 @@
-<div data-name="NewJob" class="page">
-    <!-- Top Navbar -->
-    <div class="navbar">
-        <div class="navbar-bg"></div>
-        <div class="navbar-inner">
-            <div class="left">
-                <a href="#" class="link back">
-                    <i class="icon icon-back"></i>
-                    <span>Back</span>
-                </a>
-            </div>
-            <div class="title">Add new Job</div>
+<div data-name="InputProduct" class="page">
+
+    <!-- Bottom Toolbar -->
+    <div class="toolbar toolbar-bottom">
+        <div class="toolbar-inner">
+            <!-- Toolbar links -->
+            <a href="/" class="link">Home</a>
+            <a href="/admin/" class="link" id="btn-back">Back</a>
         </div>
     </div>
 
     <!-- Scrollable page content -->
     <div class="page-content">
         <div class="block">
-            <form class="list" id="new-job-form">
+            <div class="block-title">Add new Product</div>
+            <form class="list" id="register-form">
                 <ul>
 
                     <li>
                         <div class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label">Workplace</div>
+                                <div class="item-title item-label">Product Type</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" name="workplace" id="workplace" required placeholder="Workplace's Name" />
+                                    <input type="text" id="productType" disabled readonly />
                                 </div>
                             </div>
                         </div>
@@ -33,9 +30,9 @@
                     <li>
                         <div class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label">Position</div>
+                                <div class="item-title item-label">Brand</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" name="position" id="position" required placeholder="Job's Position" />
+                                    <input type="text" id="brand" required placeholder="Brand Name" />
                                 </div>
                             </div>
                         </div>
@@ -44,9 +41,20 @@
                     <li>
                         <div class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label">Description</div>
+                                <div class="item-title item-label">Name</div>
                                 <div class="item-input-wrap">
-                                    <textarea class="resizable" id="jobDesc" required placeholder="About the Job"></textarea>
+                                    <input type="text" id="name" required placeholder="Product's Name" />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Photo</div>
+                                <div class="item-input-wrap">
+                                    <input type="file" required id="photo"/>
                                 </div>
                             </div>
                         </div>
@@ -59,9 +67,9 @@
                                 <div class="item-input-wrap">
                                     <button
                                         class="col button button-fill button-round"
-                                        id="btn-register-commit"
+                                        id="btn-add-product-commit"
                                     >
-                                        Add Job
+                                        Add
                                     </button>
                                 </div>
                             </div>

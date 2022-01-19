@@ -1,12 +1,14 @@
-#login-submit {
-    padding-top: 10px;
+.product-type {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-form#login-form {
-    margin-bottom: 5px;
+.product-type:not(:last-child) {
+    padding-bottom: 25px;
 }
 
-.button.active-state#btn-register {
-    background-color: transparent!important;
-    filter: brightness(1.2);
+.product-type#pants img {
+    padding-bottom: 10px;
 }
